@@ -1,0 +1,7 @@
+{
+  "name": "Gemini AI Image Editor",
+  "description": "A powerful AI-driven image editing tool using Gemini 2.5 Flash Image to transform photos based on natural language instructions.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
