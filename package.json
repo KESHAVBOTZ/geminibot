@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "build": "echo 'Build successful: serving static files'",
     "start": "npx serve -s ."
   },
   "dependencies": {
