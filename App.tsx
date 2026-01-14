@@ -114,7 +114,6 @@ const App: React.FC = () => {
       </header>
 
       <main className="flex-1 max-w-7xl mx-auto w-full p-4 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Workspace */}
         <div className="lg:col-span-8 space-y-6">
           <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -154,13 +153,12 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* Bot Console */}
           <div className="bg-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-800 text-slate-300 font-mono text-sm h-64 flex flex-col">
             <div className="flex justify-between items-center mb-4 border-b border-slate-800 pb-2">
               <span className="text-xs font-bold uppercase tracking-widest text-slate-500">Live Bot Console</span>
               <span className="text-[10px] text-slate-600">v1.0.0</span>
             </div>
-            <div className="flex-1 overflow-y-auto space-y-1 custom-scrollbar">
+            <div className="flex-1 overflow-y-auto space-y-1">
               {botLogs.length === 0 ? (
                 <div className="text-slate-600 italic">Waiting for activity...</div>
               ) : (
@@ -179,13 +177,12 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* Sidebar */}
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-6">
             <div className="space-y-4">
               <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
                 <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.39-.87.03-.24.37-.48 1.02-.73 4-1.74 6.67-2.88 8.01-3.43 3.81-1.56 4.6-1.83 5.12-1.84.11 0 .37.03.53.17.14.12.18.28.2.44-.01.06.01.22 0 .28z"/></svg>
-                Telegram Configuration
+                Telegram Bot (Browser)
               </h2>
               <div className="space-y-1">
                 <label className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Bot API Token</label>
@@ -193,27 +190,26 @@ const App: React.FC = () => {
                   type="password"
                   value={botToken}
                   onChange={(e) => setBotToken(e.target.value)}
-                  placeholder="Enter token from @BotFather"
+                  placeholder="Token from @BotFather"
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500/20"
                 />
               </div>
               <button
                 onClick={toggleBot}
-                className={`w-full py-3 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 ${isBotActive ? 'bg-red-50 text-red-600 border border-red-100' : 'bg-blue-600 text-white shadow-lg shadow-blue-200'}`}
+                className={`w-full py-3 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 ${isBotActive ? 'bg-red-50 text-red-600 border border-red-100' : 'bg-blue-600 text-white shadow-lg'}`}
               >
-                {isBotActive ? 'Stop Telegram Bot' : 'Start Telegram Bot'}
+                {isBotActive ? 'Stop Bot' : 'Start Bot'}
               </button>
-              <p className="text-[10px] text-slate-400 leading-tight">
-                Once started, this tab must stay open for the bot to process messages. Uses long polling.
-              </p>
+              <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
+                <p className="text-[11px] text-blue-700 leading-tight italic">
+                  ⚠️ <b>ज़रूरी सूचना:</b> यह बॉट आपके ब्राउज़र में चलता है। बॉट को चालू रखने के लिए आपको इस वेबसाइट टैब को अपने कंप्यूटर/मोबाइल में खुला रखना होगा।
+                </p>
+              </div>
             </div>
             
             <div className="pt-6 border-t border-slate-100">
-              <h2 className="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
-                <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                Recent Generations
-              </h2>
-              <div className="space-y-3 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
+              <h2 className="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">Recent Transformations</h2>
+              <div className="space-y-3 max-h-64 overflow-y-auto pr-2">
                 {history.map((item) => (
                   <div key={item.id} className="bg-slate-50 p-2 rounded-xl border border-slate-100 flex gap-3">
                     <img src={item.editedImage} className="w-12 h-12 rounded object-cover border" />
@@ -229,7 +225,7 @@ const App: React.FC = () => {
         </div>
       </main>
       <footer className="mt-auto py-8 text-center text-slate-400 text-xs font-medium">
-        Powered by Gemini 2.5 Flash & Telegram Bot API
+        Powered by Gemini 2.5 Flash
       </footer>
     </div>
   );
