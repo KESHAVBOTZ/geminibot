@@ -5,13 +5,14 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "echo 'Build successful: serving static files'",
+    "build": "esbuild index.tsx --bundle --format=esm --outfile=index.js --external:react --external:react-dom --external:@google/genai --define:process.env.API_KEY=\"$API_KEY\"",
     "start": "npx serve -s ."
   },
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "@google/genai": "^1.35.0",
-    "serve": "^14.2.4"
+    "serve": "^14.2.4",
+    "esbuild": "^0.24.0"
   }
 }
